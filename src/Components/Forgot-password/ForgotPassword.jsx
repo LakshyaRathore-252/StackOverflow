@@ -4,10 +4,10 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios'
 import { useDispatch } from 'react-redux';
 import logo from '../../assets/icon.png'
+import toast from 'react-hot-toast';
 const ForgotPassword = () => {
 
     const [email, setEmail] = useState()
-    const [response, setResponse] = useState()
     const navigate = useNavigate();
 
     async function handleSubmit(e) {
@@ -19,16 +19,18 @@ const ForgotPassword = () => {
                 .then(res => {
                     console.log(res)
                     if (res.data.message === "Email Sent Successfully, Please Check Your Email to Continue Further") {
-                        setResponse(res.data.message);
+                        toast.success(`OTP Sent on ${email}`);
                         navigate('/')
 
                     }
                     else {
                         alert("User is not resgistered with us");
+
                     }
-                }).catch(err => console.log(err))
+                }).catch((err => { console.log(err); toast.error("User not registered") }))
         } catch (error) {
             console.log(error)
+            toast.error("Inavlid email")
         }
     }
     return (
@@ -48,7 +50,6 @@ const ForgotPassword = () => {
                         className='outline-black border-2 border-black py-2 px-4'
                         onChange={(e) => setEmail(e.target.value)}
                     />
-                    <p>{response}</p>
 
                     <div className='text-center'>
                         <button className='bg-[#009DFF] rounded p-2 text-white font-semibold text-lg w-24' type='submit'>Done</button>

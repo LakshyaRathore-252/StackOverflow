@@ -58,7 +58,7 @@ const AskQuestion = () => {
               <input
                 type="text"
                 id="ask-ques-title"
-                className="chat-color"
+                className="text-[#009AFB]"
                 onChange={(e) => {
                   setQuestionTitle(e.target.value);
                 }}
@@ -74,7 +74,8 @@ const AskQuestion = () => {
               <textarea
                 name=""
                 id="ask-ques-body"
-                className="chat-color"
+                className="text-[#009AFB]"
+
 
                 onChange={(e) => {
                   setQuestionBody(e.target.value);
@@ -94,7 +95,8 @@ const AskQuestion = () => {
                   setQuestionTags(e.target.value.split(" "));
                 }}
                 placeholder="e.g. (xml typescript wordpress)"
-                className="chat-color"
+                className="text-[#009AFB]"
+
 
               />
             </label>

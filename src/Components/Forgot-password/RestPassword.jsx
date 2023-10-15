@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import './restpassword.css'
+import toast from 'react-hot-toast';
 
 const RestPassword = () => {
 
@@ -20,10 +21,11 @@ const RestPassword = () => {
         .then(res => {
           if (res.data.message === "Password Reset Successful") {
             console.log("Password Set")
+            toast.success("Password Changed Successfully");
             navigate('/Auth')
 
           }
-        }).catch(err => console.log(err))
+        }).catch(err => {console.log(err); toast.error("Error while changing password")})
 
     } catch (error) {
       console.log(error)

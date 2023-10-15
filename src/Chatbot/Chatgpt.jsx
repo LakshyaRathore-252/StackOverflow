@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import '../App.css'
 
-const Chatgpt = () => {
+const Chatgpt = ({ slideIn, handleSlideIn }) => {
   const [prompt, setPrompt] = useState("");
   const [response, setResponse] = useState("");
 

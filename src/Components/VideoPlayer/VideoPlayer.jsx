@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import video from '../VideoPlayer/v.mp4';
-
-const App = () => {
+import LeftSIdebar from '../LeftSIdebar/LeftSidebar';
+const App = ({slideIn , handleSlideIn}) => {
 
   const videoRef = useRef(null);
 
@@ -55,7 +55,8 @@ const App = () => {
   };
 
   return (
-    <div className='mt-5'>
+    <div className='flex '>
+      <LeftSIdebar slideIn={slideIn} handleSlideIn={handleSlideIn}/>
       <video
         className='w-full h-[100vh] '
         ref={videoRef}

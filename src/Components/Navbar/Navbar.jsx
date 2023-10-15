@@ -64,8 +64,9 @@ const Navbar = ({ handleSlideIn }) => {
                             For Teams
                         </Link>
                         <form>
-                            <input type="text" placeholder="Search..." />
-                            < BsSearch className="search-icon" />
+                            <input type="text" placeholder="Search..."  />
+                            <BsSearch className="search-icon" />
+
                         </form>
                     </div>
                     <div className="navbar-2 ">

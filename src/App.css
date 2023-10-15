@@ -343,7 +343,7 @@ body.dark-theme .logo {
   margin: 0;
   padding: 8px 10px 8px 32px;
   font-size: 13px;
-  border: solid 1px var(--input-border);
+  border: solid 2px var(--input-border);
   border-radius: 3px;
   margin-left: -3rem;
 }
@@ -812,9 +812,7 @@ body.dark-theme .globe {
   box-shadow: var(--chat-shadow);
 }
 
-/* .input-outline {
-  border: 2px solid var(--input-border);
-} */
+
 
 .chat {
   background-color: var(--ask-bac);

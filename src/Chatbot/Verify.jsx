@@ -4,14 +4,16 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import logo from '../assets/icon.png'
 import '../App.css'
+import LeftSidebar from '../Components/LeftSIdebar/LeftSidebar';
+import toast from 'react-hot-toast';
 
-const Verify = () => {
+
+const Verify = ({ slideIn, handleSlideIn }) => {
     const navigate = useNavigate();
     const [valid, setValid] = useState(false);
 
     const [email, setEmail] = useState();
     const [otp, setOtp] = useState();
-    const [response, setResponse] = useState('');
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -19,8 +21,8 @@ const Verify = () => {
             .post(`https://stackoverflow-ynmc.onrender.com/user/otp-verify`, { email, otp })
             .then((res) => {
                 console.log("response from client side")
-                setResponse(res.data.message);
                 if (res.data.message === "OTP Verified") {
+                    toast.success("OTP Verified");
                     navigate('/chat')
 
                 }
@@ -28,7 +30,7 @@ const Verify = () => {
             })
             .catch((err) => {
                 console.log(err)
-                setResponse("Invalid Otp")
+                toast.error("Invalid Otp")
             });
     }
     return (
@@ -57,7 +59,6 @@ const Verify = () => {
                         onChange={(e) => setOtp(e.target.value)}
 
                     />
-                    <p>{response}</p>
                     <div className='text-center'>
                         <button className='bg-[#009DFF] rounded p-2 text-white font-semibold text-lg w-24' type='submit'>Done</button>
                     </div>
