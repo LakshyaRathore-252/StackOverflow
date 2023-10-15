@@ -32,7 +32,7 @@ function App() {
 
     const currentHour = new Date().getHours();
     console.log(currentHour)
-    setTheme(currentHour >= 6 && currentHour < 18 ? 'dark-theme' : 'dark-theme');
+    setTheme(currentHour >= 6 && currentHour < 18 ? 'light-theme' : 'dark-theme');
   }, []);
 
   useEffect(() => {
