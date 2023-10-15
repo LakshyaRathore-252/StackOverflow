@@ -1,0 +1,38 @@
+  .nav-btn {
+    background-color: inherit;
+    width: 100%;
+    border: none;
+    padding: 0%;
+    font-size:20px ;
+  }
+  
+  .side-nav {
+    height: auto;
+    max-width: 100%;
+    position: sticky;
+    margin: 50px 0px;
+    padding: 20px 0px;
+  }
+  
+  .side-nav-div {
+    padding: 10px 0px;
+  }
+  
+  .side-nav-div div {
+    padding-left: 10px;
+  }
+  
+  .side-nav-div div p {
+    font-size: 20px;
+  }
+  
+
+  
+  @media screen and (max-width: 760px) {
+    .left-sidebar {
+      position: absolute;
+      transform: translateX(-100%);
+      z-index: 10;
+    }
+  }
+  

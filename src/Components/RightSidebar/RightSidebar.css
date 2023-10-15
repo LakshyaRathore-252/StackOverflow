@@ -1,0 +1,29 @@
+.right-sidebar {
+    float: right;
+    width: 300px;
+    margin: 40px 0px 15px 24px;
+    font-size: 15px;
+}
+
+
+
+.right-sidebar-div-1 .right-sidebar-div-2 {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-evenly;
+}
+
+.right-sidebar-div-1 .right-sidebar-div-2 p {
+    padding-left: 10px;
+    margin-top: 0%;
+    font-size: 13px;
+}
+
+
+
+
+@media screen and (max-width: 1020px) {
+    .right-sidebar {
+        display: none;
+    }
+}
