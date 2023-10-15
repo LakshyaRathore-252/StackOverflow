@@ -19,7 +19,7 @@ const ForgotPassword = () => {
                 .then(res => {
                     console.log(res)
                     if (res.data.message === "Email Sent Successfully, Please Check Your Email to Continue Further") {
-                        toast.success(`OTP Sent on ${email}`);
+                        toast.success(` Please Check Your Email to Continue Further`);
                         navigate('/')
 
                     }
