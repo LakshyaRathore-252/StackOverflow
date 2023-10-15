@@ -88,14 +88,13 @@ const ProfileBio = ({ currentProfile, currentUser }) => {
                     <span className='chat-color'>another way</span>
                     <p className='chat-color'> If a user actively participates and answers a certain number of  5 questions , they will earn an  badges and receive  points.</p>
                     <p className='chat-color'>
-                        1.User with 50 points will Honor badge
+                        1.User with 50 points will get Honor badge
                         <br />
-                        2.User with 100 points will Sliver badge
+                        2.User with 100 points will get Sliver badge
                         <br />
-                        3.User with 200 points will Gold badge
+                        3.User with 200 points will get Gold badge
                         <br />
-                        4.User with 500 points will Platinum badge
-                        <br />
+                        4. A user with 500 points will receive the Platinum badge.                       
                     </p>
                 </div>
             </div>
