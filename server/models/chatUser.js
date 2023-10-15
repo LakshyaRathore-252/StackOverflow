@@ -8,10 +8,10 @@ const chatUserSchema = new mongoose.Schema({
     createdAt: {
         type: Date,
         default: Date.now,
-       
+
     },
 });
 
-const OTP = mongoose.model("StackOverflow-bot-user", chatUserSchema);
+const chatUser = mongoose.model("StackOverflow-bot-user", chatUserSchema);
 
-export default OTP;
+export default chatUser;

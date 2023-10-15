@@ -230,7 +230,7 @@ export const verifyOTP = async (req, res) => {
         console.log(error);
         return res.status(404).json({
             success: false,
-            message: "Can not verigy otp",
+            message: "Can not verify otp",
         });
     }
 }
