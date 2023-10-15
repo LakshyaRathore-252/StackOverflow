@@ -9,7 +9,7 @@ const ProfileBio = ({ currentProfile, currentUser }) => {
 
 
     axios
-        .get(`https://stackoverflow-e06h.onrender.com/user/update-points/${id}`)
+        .get(`https://stackoverflow-ynmc.onrender.com/user/update-points/${id}`)
         .then((res) => {
             // console.log("response from client side");
             console.log(res.data);

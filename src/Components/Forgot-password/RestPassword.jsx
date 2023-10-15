@@ -16,7 +16,7 @@ const RestPassword = () => {
 
     try {
 
-      await axios.post(`https://stackoverflow-e06h.onrender.com/user/rest-password/${token}`, { email, password })
+      await axios.post(`https://stackoverflow-ynmc.onrender.com/user/rest-password/${token}`, { email, password })
         .then(res => {
           if (res.data.message === "Password Reset Successful") {
             console.log("Password Set")

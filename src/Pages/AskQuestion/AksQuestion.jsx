@@ -58,6 +58,7 @@ const AskQuestion = () => {
               <input
                 type="text"
                 id="ask-ques-title"
+                className="chat-color"
                 onChange={(e) => {
                   setQuestionTitle(e.target.value);
                 }}
@@ -73,6 +74,8 @@ const AskQuestion = () => {
               <textarea
                 name=""
                 id="ask-ques-body"
+                className="chat-color"
+
                 onChange={(e) => {
                   setQuestionBody(e.target.value);
                 }}
@@ -91,13 +94,15 @@ const AskQuestion = () => {
                   setQuestionTags(e.target.value.split(" "));
                 }}
                 placeholder="e.g. (xml typescript wordpress)"
+                className="chat-color"
+
               />
             </label>
           </div>
           <input
             type="submit"
             value="Reivew your question"
-            className="review-btn"
+            className="review-btn chat-color"
           />
         </form>
       </div>

@@ -16,7 +16,7 @@ const Verify = () => {
         e.preventDefault();
 
         axios
-            .post(`https://stackoverflow-e06h.onrender.com/user/otp-verify`, { email, otp })
+            .post(`https://stackoverflow-ynmc.onrender.com/user/otp-verify`, { email, otp })
             .then((res) => {
                 console.log("response from client side")
                 setResponse(res.data.message);

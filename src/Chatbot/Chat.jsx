@@ -16,7 +16,7 @@ const Chat = () => {
         e.preventDefault();
 
         axios
-            .post(`https://stackoverflow-e06h.onrender.com/user/Otp`, { email })
+            .post(`https://stackoverflow-ynmc.onrender.com/user/Otp`, { email })
             .then((res) => {
                 console.log("response from client side");
                 setResponse(res.data.message);

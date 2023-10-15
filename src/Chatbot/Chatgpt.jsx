@@ -10,7 +10,7 @@ const Chatgpt = () => {
     e.preventDefault();
 
     axios
-      .post(`https://stackoverflow-e06h.onrender.com/chat`, { prompt })
+      .post(`https://stackoverflow-ynmc.onrender.com/chat`, { prompt })
       .then((res) => {
         setResponse(res.data);
       })

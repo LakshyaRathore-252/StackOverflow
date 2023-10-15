@@ -15,7 +15,7 @@ const ForgotPassword = () => {
 
         try {
 
-            await axios.post(`https://stackoverflow-e06h.onrender.com/user/forgot-password`, { email })
+            await axios.post(`https://stackoverflow-ynmc.onrender.com/user/forgot-password`, { email })
                 .then(res => {
                     console.log(res)
                     if (res.data.message === "Email Sent Successfully, Please Check Your Email to Continue Further") {
