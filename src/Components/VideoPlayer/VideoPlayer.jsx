@@ -1,7 +1,8 @@
 import React, { useRef } from 'react';
 import video from '../VideoPlayer/v.mp4';
+import './video.css'
 import LeftSIdebar from '../LeftSIdebar/LeftSidebar';
-const App = ({slideIn , handleSlideIn}) => {
+const App = ({ slideIn, handleSlideIn }) => {
 
   const videoRef = useRef(null);
 
@@ -9,7 +10,9 @@ const App = ({slideIn , handleSlideIn}) => {
   let touchEndX = 0;
 
   const handleTouchStart = (e) => {
+    console.log(e);
     touchStartX = e.changedTouches[0].clientX;
+    console.log(touchStartX)
   };
 
   const handleTouchEnd = (e) => {
@@ -18,8 +21,10 @@ const App = ({slideIn , handleSlideIn}) => {
   };
 
   const handleSwipeGesture = () => {
-    const minSwipeDistance = 100; // Set minimum swipe distance as per your requirement
+    const minSwipeDistance = 100; // Set minimum swipe distance as per your 
+    console.log("videoRef", videoRef)
     const videoElementWidth = videoRef.current.offsetWidth;
+    console.log(videoElementWidth)
 
     if (Math.abs(touchEndX - touchStartX) > minSwipeDistance) {
       if (touchEndX < touchStartX && touchStartX > videoElementWidth / 2) {
@@ -35,8 +40,11 @@ const App = ({slideIn , handleSlideIn}) => {
   };
 
   const handleDoubleClick = (e) => {
+
     const clickX = e.clientX;
+    console.log(clickX)
     const videoElementWidth = videoRef.current.offsetWidth;
+    console.log(videoElementWidth)
 
     if (clickX < videoElementWidth / 3) {
       // Double click on the left side of the screen
@@ -56,13 +64,14 @@ const App = ({slideIn , handleSlideIn}) => {
 
   return (
     <div className='flex '>
-      <LeftSIdebar slideIn={slideIn} handleSlideIn={handleSlideIn}/>
+      <LeftSIdebar slideIn={slideIn} handleSlideIn={handleSlideIn} />
       <video
-        className='w-full h-[100vh] '
+        className='video w-full h-[100vh] '
         ref={videoRef}
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
         onDoubleClick={handleDoubleClick}
+        controls
         src={video}
       />
     </div>

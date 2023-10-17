@@ -13,7 +13,7 @@ const LeftSidebar = ({ slideIn, handleSlideIn }) => {
     transform: "translateX(-100%)",
   };
   return (
-    <div className='left-sidebar' style={slideIn ? slideInStyle : slideOutStyle}>
+    <div className='left-sidebar h-[100vh]' style={slideIn ? slideInStyle : slideOutStyle}>
       <nav className='side-nav'>
         <button onClick={() => handleSlideIn()} className="nav-btn">
           <NavLink to="/" className="side-nav-links text-xl" style={{ paddingLeft: "40px" }} activeclassName="active">

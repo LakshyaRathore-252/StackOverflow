@@ -8,6 +8,7 @@ import icon from "../../assets/icon.png";
 import AboutAuth from "./AboutAuth";
 
 import { signup, login } from "../../actions/auth";
+import LeftSidebar from "../../Components/LeftSIdebar/LeftSidebar";
 const Auth = () => {
 
   const [isSignup, setIsSignup] = useState(false);
@@ -42,6 +43,7 @@ const Auth = () => {
 
   return (
     <section className="auth-section">
+      
       {isSignup && <AboutAuth />}
       <div className="auth-container-2">
         <img src={icon} alt="stack overflow" className="login-logo" />
@@ -77,7 +79,7 @@ const Auth = () => {
               <h4>Password</h4>
               {!isSignup && (
                 <p style={{ color: "#007ac6", fontSize: "13px" }}>
-                
+
                   <Link to="/forgot-password">  forgot password?</Link>
                 </p>
               )}

@@ -22,17 +22,21 @@ const Chatbot = () => {
     return (
         <div className='h-[100vh] flex justify-center items-center'>
             <div className='flex justify-center items-center '>
-                <form onSubmit={handleSubmit} className='flex flex-col shadow space-y-6 py-6 px-16 chat'>
-                    <h2 className='text-2xl chat-color'>Welcome to <span className='text-2xl text-[] font-medium '>StackOverflow bot</span></h2>
+                <form onSubmit={handleSubmit} className='flex flex-col shadow w-full justify-center items-center   space-y-6 md:px-5 md:py-2 lg:py-6 lg:px-16 chat'>
+                    <div className=' flex justify-center items-center'>
+
+                        <h2 className='text-2xl text-center chat-color'>Welcome to <span className='text-xl md:text-2xl  font-medium '>StackOverflow bot</span></h2>
+                    </div>
                     <label className='chat-color'>
                         Ask Me Anything :
                     </label>
                     <textarea
+
                         rows={10}
                         cols={30}
                         value={prompt}
                         onChange={(e) => setPrompt(e.target.value)}
-                        className='outline-black border-2 border-black'
+                        className='outline-black border-2 border-black w-[50vh]'
 
                     />
 

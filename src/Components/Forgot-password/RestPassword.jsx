@@ -32,9 +32,9 @@ const RestPassword = () => {
     }
   }
   return (
-    <div className='mt-64'>
+    <div className='flex justify-center items-center h-[100vh]'>
       <div className='password flex justify-center items-center'>
-        <form onSubmit={handleSubmit} className='flex flex-col shadow space-y-6 py-6 px-16'>
+        <form onSubmit={handleSubmit} className='flex flex-col shadow space-y-6 py-2 px-5 lg:py-6 lg:px-16'>
           <label>
             Enter Email :
           </label>
