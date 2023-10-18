@@ -20,6 +20,10 @@ const App = ({ slideIn, handleSlideIn }) => {
     handleSwipeGesture();
   };
 
+  const handleclick = (e) => {
+    e.preventDefault();
+}
+
   const handleSwipeGesture = () => {
     const minSwipeDistance = 100; // Set minimum swipe distance as per your 
     console.log("videoRef", videoRef)
@@ -69,9 +73,11 @@ const App = ({ slideIn, handleSlideIn }) => {
         className='video w-full h-[100vh] '
         ref={videoRef}
         onTouchStart={handleTouchStart}
+        onClick={handleclick}
         onTouchEnd={handleTouchEnd}
         onDoubleClick={handleDoubleClick}
         autoplay
+        controls
         src={video}
       />
     </div>
