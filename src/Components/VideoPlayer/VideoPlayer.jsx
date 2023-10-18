@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import video from '../VideoPlayer/v.mp4';
+import video from '../VideoPlayer/s.mp4';
 import './video.css'
 import LeftSIdebar from '../LeftSIdebar/LeftSidebar';
 const App = ({ slideIn, handleSlideIn }) => {
@@ -71,7 +71,7 @@ const App = ({ slideIn, handleSlideIn }) => {
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
         onDoubleClick={handleDoubleClick}
-        controls
+        autoplay
         src={video}
       />
     </div>
