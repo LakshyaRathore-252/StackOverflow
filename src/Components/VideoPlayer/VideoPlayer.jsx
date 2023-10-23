@@ -1,87 +1,150 @@
-import React, { useRef } from 'react';
 import video from '../VideoPlayer/s.mp4';
-import './video.css'
-import LeftSIdebar from '../LeftSIdebar/LeftSidebar';
-const App = ({ slideIn, handleSlideIn }) => {
+import React, { useRef, useState, useEffect } from 'react';
 
-  const videoRef = useRef(null);
+function VideoPlayer({ src }) {
+  const videoRef = useRef();
+  const [tapCount, setTapCount] = useState(0);
+  const [tapPosition, setTapPosition] = useState(null);
+  const [progress, setProgress] = useState(0);
+  const [volume, setVolume] = useState(1);
+  const [playbackRate, setPlaybackRate] = useState(1);
 
-  let touchStartX = 0;
-  let touchEndX = 0;
+  useEffect(() => {
+    const video = videoRef.current;
+    const updateProgress = () => {
+      setProgress((video.currentTime / video.duration) * 100);
+    };
 
-  const handleTouchStart = (e) => {
-    console.log(e);
-    touchStartX = e.changedTouches[0].clientX;
-    console.log(touchStartX)
-  };
-
-  const handleTouchEnd = (e) => {
-    touchEndX = e.changedTouches[0].clientX;
-    handleSwipeGesture();
-  };
-
-  const handleclick = (e) => {
-    e.preventDefault();
-}
-
-  const handleSwipeGesture = () => {
-    const minSwipeDistance = 100; // Set minimum swipe distance as per your 
-    console.log("videoRef", videoRef)
-    const videoElementWidth = videoRef.current.offsetWidth;
-    console.log(videoElementWidth)
-
-    if (Math.abs(touchEndX - touchStartX) > minSwipeDistance) {
-      if (touchEndX < touchStartX && touchStartX > videoElementWidth / 2) {
-        // Swipe Left detected on the right side of the screen
-        videoRef.current.currentTime += 10; // Forward the video by 10 seconds
-      }
-
-      if (touchEndX > touchStartX && touchStartX < videoElementWidth / 2) {
-        // Swipe Right detected on the left side of the screen
-        videoRef.current.currentTime -= 10; // Rewind the video by 10 seconds
-      }
+    if (video) {
+      video.addEventListener('timeupdate', updateProgress);
     }
+
+    return () => {
+      if (video) {
+        video.removeEventListener('timeupdate', updateProgress);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    video.playbackRate = playbackRate;
+  }, [playbackRate]);
+
+  const handleTap = (e) => {
+    const { clientX } = e;
+    const { offsetWidth } = e.target;
+    setTapCount(prevCount => prevCount + 1);
+
+    if (clientX > offsetWidth * 0.3 && clientX < offsetWidth * 0.7) {
+      setTapPosition('middle');
+    } else {
+      setTapPosition(clientX > offsetWidth / 2 ? 'right' : 'left');
+    }
+
+    if (tapCount === 1) {
+      if (tapPosition === 'middle') {
+        if (videoRef.current.paused) {
+          videoRef.current.play();
+        } else {
+          videoRef.current.pause();
+        }
+      } else if (tapPosition === 'right') {
+        videoRef.current.currentTime += 10;
+      } else {
+        videoRef.current.currentTime -= 10;
+      }
+      setTapCount(0);
+    }
+
+    setTimeout(() => {
+      setTapCount(0);
+    }, 300);
   };
 
-  const handleDoubleClick = (e) => {
+  const handleSeek = (e) => {
+    const video = videoRef.current;
+    const newTime = (e.target.value / 100) * video.duration;
+    video.currentTime = newTime;
+  };
 
-    const clickX = e.clientX;
-    console.log(clickX)
-    const videoElementWidth = videoRef.current.offsetWidth;
-    console.log(videoElementWidth)
+  const handleVolumeChange = (e) => {
+    const video = videoRef.current;
+    setVolume(e.target.value);
+    video.volume = e.target.value;
+  };
 
-    if (clickX < videoElementWidth / 3) {
-      // Double click on the left side of the screen
-      videoRef.current.currentTime -= 10; // Rewind the video by 10 seconds
-    } else if (clickX > (videoElementWidth / 3) * 2) {
-      // Double click on the right side of the screen
-      videoRef.current.currentTime += 10; // Forward the video by 10 seconds
+  const handlePlaybackRateChange = (e) => {
+    setPlaybackRate(e.target.value);
+  };
+
+  const toggleFullscreen = () => {
+    const video = videoRef.current;
+    if (!document.fullscreenElement) {
+      if (video.requestFullscreen) {
+        video.requestFullscreen();
+      } else if (video.mozRequestFullScreen) { /* Firefox */
+        video.mozRequestFullScreen();
+      } else if (video.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+        video.webkitRequestFullscreen();
+      } else if (video.msRequestFullscreen) { /* IE/Edge */
+        video.msRequestFullscreen();
+      }
     } else {
-      // Double click in the middle of the screen
-      if (videoRef.current.paused) {
-        videoRef.current.play();
-      } else {
-        videoRef.current.pause();
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.mozCancelFullScreen) { /* Firefox */
+        document.mozCancelFullScreen();
+      } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+        document.webkitExitFullscreen();
+      } else if (document.msExitFullscreen) { /* IE/Edge */
+        document.msExitFullscreen();
       }
     }
   };
 
   return (
-    <div className='flex '>
-      <LeftSIdebar slideIn={slideIn} handleSlideIn={handleSlideIn} />
+    <div className='flex flex-col relative '>
       <video
-        className='video w-full h-[100vh] '
         ref={videoRef}
-        onTouchStart={handleTouchStart}
-        onClick={handleclick}
-        onTouchEnd={handleTouchEnd}
-        onDoubleClick={handleDoubleClick}
-        autoplay
-        controls
-        src={video}
+        src={src}
+        onClick={handleTap}
+        style={{ width: '100%', height: '100vh' }}
       />
+      <div className='absolute bottom-5 space-x-5 flex w-full flex-wrap '>
+          <p className='text-white'>Progress Rate</p>
+          <input
+            type="range"
+            min="0"
+            max="100"
+            value={progress}
+            className='w-[70%]'
+            onChange={handleSeek}
+          />
+        <p className='text-white'>VolumeChange</p>
+
+        <input
+          type="range"
+          min="0"
+          max="1"
+          step="0.01"
+          value={volume}
+          onChange={handleVolumeChange}
+        />
+        <p className='text-white'>playbackRate</p>
+        <input
+          type="range"
+          min="0.5"
+          max="2"
+          step="0.1"
+          value={playbackRate}
+          onChange={handlePlaybackRateChange}
+        />
+
+        <button className='text-white right-0' onClick={toggleFullscreen}>Toggle Fullscreen</button> {/* Add this line */}
+      </div>
     </div>
   );
-};
+}
 
-export default App;
+export default VideoPlayer;

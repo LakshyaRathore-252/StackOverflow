@@ -4,7 +4,7 @@ import { Routes, Route } from "react-router-dom";
 
 
 // ================================================= Import Components ===================================================
-
+import src from '../src/s.mp4'
 import Home from "./Pages/Home/Home.jsx";
 import Auth from "./Pages/Auth/Auth.jsx";
 import Questions from "./Pages/Questions/Questions.jsx";
@@ -69,7 +69,7 @@ const AllRoutes = ({ slideIn, handleSlideIn }) => {
             />
             <Route
                 path="/video-player"
-                element={<VideoPlayer slideIn={slideIn} handleSlideIn={handleSlideIn} />}
+                element={<VideoPlayer src={src} slideIn={slideIn} handleSlideIn={handleSlideIn} />}
             />
             <Route
                 path="/otp-verify"
