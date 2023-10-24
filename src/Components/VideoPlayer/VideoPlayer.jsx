@@ -112,7 +112,7 @@ function VideoPlayer({ src }) {
         style={{ width: '100%', height: '100vh' }}
       />
       <div className='absolute bottom-5 space-x-5 flex w-full flex-wrap '>
-          <p className='text-white'>Progress Rate</p>
+          <p className='chat-color'>Progress Rate</p>
           <input
             type="range"
             min="0"
@@ -121,7 +121,7 @@ function VideoPlayer({ src }) {
             className='w-[70%]'
             onChange={handleSeek}
           />
-        <p className='text-white'>VolumeChange</p>
+        <p className='chat-color'>VolumeChange</p>
 
         <input
           type="range"
@@ -131,7 +131,7 @@ function VideoPlayer({ src }) {
           value={volume}
           onChange={handleVolumeChange}
         />
-        <p className='text-white'>playbackRate</p>
+        <p className='chat-color'>playbackRate</p>
         <input
           type="range"
           min="0.5"
@@ -141,7 +141,7 @@ function VideoPlayer({ src }) {
           onChange={handlePlaybackRateChange}
         />
 
-        <button className='text-white right-0' onClick={toggleFullscreen}>Toggle Fullscreen</button> {/* Add this line */}
+        <button className='chat-color right-0' onClick={toggleFullscreen}>Toggle Fullscreen</button> {/* Add this line */}
       </div>
     </div>
   );
